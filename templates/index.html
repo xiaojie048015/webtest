@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动化测试</title>
+    <style>
+    body
+    {
+        background-color:#d0e4fe;
+    }
+    h1
+    {
+        color:orange;
+        text-align:center;
+    }
+    a
+    {
+        color:#264409;
+        text-align:center;
+    }
+    p
+    {
+        font-family:"Times New Roman";
+        font-size:20px;
+    }
+    </style>
+    <script>
+        function dispalydate() {
+             document.getElementById('demo').innerHTML=Date()
+        }
+        function visiblity() {
+            document.getElementById('vip').style.visibility="hidden"
+
+        }
+        function visibe() {
+            document.getElementById('vip').style.visibility="visible"
+
+        }
+    </script>
+    <script>
+    (function(config) {
+        window.AnalysysAgent = window.AnalysysAgent || []
+        window.AnalysysAgent.methods = 'identify alias reset track profileSet profileSetOnce profileIncrement profileAppend profileUnset profileDelete registerSuperProperty registerSuperProperties unRegisterSuperProperty clearSuperProperties getSuperProperty getSuperProperties pageView debugMode auto appkey name uploadURL hash visitorConfigURL autoProfile autoWebstay encryptType pageProperty autoHeatmap freeApi'.split(' ');
+
+        function factory(b) {
+            return function() {
+                var a = Array.prototype.slice.call(arguments);
+                a.unshift(b);
+                window.AnalysysAgent.push(a);
+                return window.AnalysysAgent;
+            }
+        };
+        for (var i = 0; i < AnalysysAgent.methods.length; i++) {
+            var key = window.AnalysysAgent.methods[i];
+            AnalysysAgent[key] = factory(key);
+        }
+        for (var key in config) {
+            AnalysysAgent[key](config[key])
+        }
+    })({
+        appkey: 'e0129911679a1fa5', //APPKEY
+        uploadURL: 'http://192.168.8.76:8089',//上传数据的地址
+    })
+</script>
+    <script type="text/javascript"  src="../openSource-JS/test/web/static/javascript/index.js"></script>
+    <script type="text/javascript"  src="../openSource-JS/test/web/static/javascript/console.js"></script>
+    <script type="text/javascript"  src="../openSource-JS/test/web/static/javascript/initSdk.js"></script>
+    <script type="text/javascript" id="ARK_SDK" src="../openSource-JS/test/web/sdk/AnalysysAgent_JS_SDK.min.js"></script>
+</head>
+<body >
+<h1>好好学习，天天向上</h1>
+<button type="button" id="testid" class="testclassname" onclick="alert('别点我，点登录啊')">点击此处</button>
+<a href="/signin" >登录</a>
+<br>
+<br>
+
+<div style="border:solid 5px #999999;width: 100px;height: 100px">
+<!--<p id="p1" style="visibility: visible">vip会员专属.</p>-->
+<button type="button" id="vip" onclick="alert('我是vip')" style="color: #cc0000 ;visibility:hidden"  >vip客户专属</button>
+</div>
+<input type="button" onclick="visiblity()" value="Hide text" />
+
+<input type="button" onclick="visibe()" value="visilbe text" />
+
+</body>
+</html>
+
+
+
